@@ -7,7 +7,7 @@ import json
 import operator
 
 
-class LocationScout:
+class LocationScout(commands.Cog):
     """This extension handles price lookups."""
 
     def __init__(self, bot):

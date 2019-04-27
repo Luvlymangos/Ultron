@@ -11,7 +11,7 @@ from ultron import utils
 from ultron.lib import db
 
 
-class Core:
+class Core(commands.Cog):
     """General bot functions."""
 
     def __init__(self, bot):

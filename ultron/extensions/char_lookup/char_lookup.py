@@ -8,7 +8,7 @@ from ultron.utils import make_embed
 from ultron.core import checks
 
 
-class CharLookup:
+class CharLookup(commands.Cog):
     """This extension handles looking up characters."""
 
     def __init__(self, bot):

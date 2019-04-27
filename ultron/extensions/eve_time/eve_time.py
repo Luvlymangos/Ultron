@@ -6,7 +6,7 @@ from ultron.utils import make_embed
 from ultron.core import checks
 
 
-class EveTime:
+class EveTime(commands.Cog):
     """This extension handles the time commands."""
 
     def __init__(self, bot):

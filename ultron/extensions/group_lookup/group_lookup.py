@@ -8,7 +8,7 @@ from ultron.utils import make_embed
 from ultron.core import checks
 
 
-class GroupLookup:
+class GroupLookup(commands.Cog):
     """This extension handles looking up corps and alliance."""
 
     def __init__(self, bot):

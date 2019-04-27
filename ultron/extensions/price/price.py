@@ -3,7 +3,7 @@ from ultron.utils import make_embed
 from ultron.core import checks
 
 
-class Price:
+class Price(commands.Cog):
     """This extension handles price lookups."""
 
     def __init__(self, bot):

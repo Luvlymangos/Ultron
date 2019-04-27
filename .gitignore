@@ -71,3 +71,4 @@ eggs/
 .installed.cfg
 *.egg
 .vscode/
+venv/

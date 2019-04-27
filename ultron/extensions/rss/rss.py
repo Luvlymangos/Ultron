@@ -3,8 +3,9 @@ import asyncio
 import feedparser
 import discord
 from datetime import datetime
+from discord.ext import commands
 
-class Rss:
+class Rss(commands.Cog):
     # Number of minutes between feed checks
     DEFAULT_UPDATE_INTERVAL = 15
 

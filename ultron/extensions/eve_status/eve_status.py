@@ -4,7 +4,7 @@ from ultron.utils import make_embed
 from ultron.core import checks
 
 
-class EveStatus:
+class EveStatus(commands.Cog):
     """This extension handles the status command."""
 
     def __init__(self, bot):

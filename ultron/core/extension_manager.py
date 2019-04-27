@@ -7,7 +7,7 @@ from ultron.core import checks
 from ultron import utils
 
 
-class ExtensionManager:
+class ExtensionManager(commands.Cog):
     """Commands to add, remove and change extensions for ultron."""
 
     def __local_check(self, ctx):

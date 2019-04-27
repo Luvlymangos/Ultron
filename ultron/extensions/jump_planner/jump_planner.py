@@ -4,7 +4,7 @@ from ultron.utils import make_embed
 from ultron.core import checks
 
 
-class JumpPlanner:
+class JumpPlanner(commands.Cog):
     """This extension handles the time commands."""
 
     def __init__(self, bot):
