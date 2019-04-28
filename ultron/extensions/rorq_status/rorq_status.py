@@ -39,7 +39,6 @@ class RorqStatus(commands.Cog):
 
                 await self.delete_messages(rorqStatusChannel)
                 await rorqStatusChannel.send("Mine, mine, mine", file=file)
-                await conversationChannel.send("Thanks FC. Switched RorqStatus to green!")
             elif status == 'red':
                 current_folder = os.path.dirname(__file__)
                 filename = os.path.join(current_folder, 'siege_red.jpg')
@@ -47,7 +46,6 @@ class RorqStatus(commands.Cog):
 
                 await self.delete_messages(rorqStatusChannel)
                 await rorqStatusChannel.send("Siege Red girls and boys. No exceptions!", file=file)
-                await conversationChannel.send(":( OK OK I'll tell them to dock-up after this cycle")
             else:
                 raise Exception('**ERROR:** Unknown status command {} Do !help rorqstatus for more info'.format(status))
         except Exception as e:

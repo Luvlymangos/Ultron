@@ -60,6 +60,38 @@ class ultron(commands.Bot):
         self.esi_data = ESI(self.session)
         self.loop.create_task(self.load_db())
 
+    async def process_commands(self, message):
+        """|coro|
+
+        This function processes the commands that have been registered
+        to the bot and other groups. Without this coroutine, none of the
+        commands will be triggered.
+
+        By default, this coroutine is called inside the :func:`.on_message`
+        event. If you choose to override the :func:`.on_message` event, then
+        you should invoke this coroutine as well.
+
+        This is built using other low level tools, and is equivalent to a
+        call to :meth:`~.Bot.get_context` followed by a call to :meth:`~.Bot.invoke`.
+
+        This also checks if the message's author is a bot and doesn't
+        call :meth:`~.Bot.get_context` or :meth:`~.Bot.invoke` if so.
+
+        Parameters
+        -----------
+        message: :class:`discord.Message`
+            The message to process commands for.
+        """
+        if message.author.bot and message.author.id not in self.config.webhook_bots:
+            return
+
+        ctx = await self.get_context(message)
+        await self.invoke(ctx)
+
+    async def on_message(self, message):
+        await self.process_commands(message)
+
+
     async def load_db(self):
         await db.create_tables()
         data = await db.select("SELECT * FROM prefixes")
