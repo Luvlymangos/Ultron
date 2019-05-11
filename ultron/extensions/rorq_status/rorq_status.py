@@ -8,7 +8,7 @@ import pytz
 from datetime import datetime
 
 class RorqStatus(commands.Cog):
-    """This extension handles the time commands."""
+    """This extension handles the rorq status change commands."""
 
     def __init__(self, bot):
         self.bot = bot
@@ -25,6 +25,9 @@ class RorqStatus(commands.Cog):
         self.logger.info('RorqStatus - {} requested a rorqual status change.'.format(str(ctx.message.author)))
         conversationChannel = ctx.author if ctx.bot.config.dm_only else ctx
         try:
+            if ctx.channel.id not in self.config.webhook_channel_ids:
+                raise Exception("**ERROR** You're not allowed to use this command on this channel!")
+
             splittedStr = ctx.message.content.split()
             if len(splittedStr) < 2:
                 raise Exception('**ERROR** No status command provided! Do !help rorqstatus for more info')
@@ -34,7 +37,7 @@ class RorqStatus(commands.Cog):
             if rorqStatusChannel is None:
                 raise Exception('**FATAL ERROR** rorqstatus channel is not properly configured! Please contact system admin')
 
-            current_datetime = datetime.now(pytz.timezone('UTC')).strftime('%b %d %H:%M (EVE Time)')
+            current_datetime = datetime.now(pytz.timezone('UTC')).strftime('%b %d %Y %H:%M (EVE Time)')
             last_update = "**Last Update** {}".format(current_datetime)
             if status == 'green':
                 current_folder = os.path.dirname(__file__)
@@ -54,9 +57,6 @@ class RorqStatus(commands.Cog):
                 raise Exception('**ERROR:** Unknown status command {} Do !help rorqstatus for more info'.format(status))
         except Exception as e:
             return await conversationChannel.send(str(e))
-
-    def test(self):
-        i = 5
 
     async def delete_messages(self, rorqStatusChannel):
         msgs = []
