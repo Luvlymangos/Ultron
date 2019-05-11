@@ -25,7 +25,7 @@ setup(
     packages=find_packages(),
 
     install_requires=[
-        '.py[voice]',
+        'discord.py[voice]',
         'python-dateutil>=2.6',
         'asyncpg>=0.13',
         'pytz',
