@@ -14,6 +14,7 @@ class ExtensionManager(commands.Cog):
         return checks.check_is_co_owner(ctx)
 
     @commands.group()
+    @checks.is_admin()
     async def ext(self, ctx):
         """Commands to manage extensions."""
         if ctx.invoked_subcommand is None:
@@ -105,6 +106,7 @@ class ExtensionManager(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
+    @checks.is_admin()
     async def reload_core(self, ctx):
         """Reload Core Commands."""
         bot = ctx.bot
@@ -122,6 +124,7 @@ class ExtensionManager(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command()
+    @checks.is_admin()
     async def reload_dm(self, ctx):
         """Reload Data Manager."""
         bot = ctx.bot

@@ -9,6 +9,7 @@ import discord
 from dateutil.relativedelta import relativedelta
 from discord.ext import commands
 
+from discord.ext.commands import DefaultHelpCommand
 from ultron.lib import ESI, db
 from ultron.utils import ExitCodes
 
@@ -50,10 +51,13 @@ class ultron(commands.Bot):
         self.token = config.bot_token
         self.req_perms = discord.Permissions(config.bot_permissions)
         self.co_owners = config.bot_coowners
+        self.webhook_bots = config.webhook_bots
         self.preload_ext = config.preload_extensions
+
         kwargs["command_prefix"] = prefix_manager
         kwargs["pm_help"] = True
         # kwargs["command_prefix"] = self.db.prefix_manager
+        kwargs["help_command"] = DefaultHelpCommand(dm_help=config.dm_only)
         kwargs["owner_id"] = self.owner
         super().__init__(**kwargs)
         self.session = aiohttp.ClientSession(loop=self.loop)

@@ -13,6 +13,14 @@ async def check_is_co_owner(ctx):
         return True
     if ctx.author.id in ctx.bot.co_owners:
         return True
+
+    return False
+
+
+async def check_is_webhook(ctx):
+    if ctx.author.id in ctx.bot.webhook_bots:
+        return True
+
     return False
 
 
@@ -29,6 +37,7 @@ async def check_is_admin(ctx):
         return True
     if ctx.author.guild_permissions.manage_guild:
         return True
+
     return False
 
 
@@ -120,6 +129,10 @@ def is_owner():
 
 def is_co_owner():
     return commands.check(check_is_co_owner)
+
+
+def is_webhook():
+    return commands.check(check_is_webhook)
 
 
 def is_guild_owner():
