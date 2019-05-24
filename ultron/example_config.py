@@ -7,9 +7,11 @@ bot_token = 'ADD DISCORD BOT TOKEN HERE'
 # default bot settings
 bot_prefix = ['!']
 bot_master = 000000000000  # The discord ID of the owner
-bot_coowners = [000000000000000]  # The discord ID's of co-owners
-webhook_bots = [00000000000000000] #Bot IDs that are connected through webhook
-webhook_channel_ids = [000000000000000] #ID of website_integration channels. Commands such as rorqstatus, fcping can only be originated from these channels
+bot_coowners = [000000000000000,000000000000000]  # The discord ID's of co-owners
+fcping_managers = [000000000000000,000000000000000] #Discord IDs who'll have access to fcping command
+rorqstatus_managers = [000000000000000,000000000000000] #Discord IDs who'll have access to rorqstatus command
+webhook_bots = [000000000000000] #Discord id of the webhook bot(s) webhook bot has direct access to fcping and rorqstatus commands
+webhook_channel_ids = [000000000000000,000000000000000] #ID of website_integration channels. Commands such as rorqstatus, fcping can only be originated from these channels
 
 # minimum required permissions for bot (Only really needed if you're inviting it to other servers, probably safe to
 # not touch this)

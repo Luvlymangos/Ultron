@@ -13,16 +13,30 @@ async def check_is_co_owner(ctx):
         return True
     if ctx.author.id in ctx.bot.co_owners:
         return True
-
     return False
 
 
-async def check_is_webhook(ctx):
+async def check_is_rorqstatus_manager(ctx):
+    if ctx.author.id in ctx.bot.rorqstatus_managers:
+        return True
+
     if ctx.author.id in ctx.bot.webhook_bots:
         return True
 
+    await ctx.author.send('WARNING: You do not have the required roles to use commands in this channel. Feel free'
+                          ' to PM me directly any commands you would like to use.')
     return False
 
+async def check_is_fcping_manager(ctx):
+    if ctx.author.id in ctx.bot.fcping_managers:
+        return True
+
+    if ctx.author.id in ctx.bot.webhook_bots:
+        return True
+
+    await ctx.author.send('WARNING: You do not have the required roles to use commands in this channel. Feel free'
+                          ' to PM me directly any commands you would like to use.')
+    return False
 
 async def check_is_guildowner(ctx):
     if await check_is_co_owner(ctx):
@@ -131,8 +145,11 @@ def is_co_owner():
     return commands.check(check_is_co_owner)
 
 
-def is_webhook():
-    return commands.check(check_is_webhook)
+def is_rorqstatus_manager():
+    return commands.check(check_is_rorqstatus_manager)
+
+def is_fcping_manager():
+    return commands.check(check_is_fcping_manager)
 
 
 def is_guild_owner():

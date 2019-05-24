@@ -51,6 +51,8 @@ class ultron(commands.Bot):
         self.token = config.bot_token
         self.req_perms = discord.Permissions(config.bot_permissions)
         self.co_owners = config.bot_coowners
+        self.fcping_managers = config.fcping_managers
+        self.rorqstatus_managers = config.rorqstatus_managers
         self.webhook_bots = config.webhook_bots
         self.preload_ext = config.preload_extensions
 

@@ -17,7 +17,7 @@ class RorqStatus(commands.Cog):
 
     @commands.command(name='rorqstatus')
     @checks.spam_check()
-    @checks.is_webhook()
+    @checks.is_rorqstatus_manager()
     async def _rorq_status(self, ctx):
         """Provides Rorqual status posts.
         '!rorqstatus green Switches rorq status to green.

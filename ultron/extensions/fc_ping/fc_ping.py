@@ -20,7 +20,7 @@ class FCPing(commands.Cog):
 
     @commands.command(name='fcping')
     @checks.spam_check()
-    @checks.is_webhook()
+    @checks.is_fcping_manager()
     async def _fc_ping(self, ctx):
         """Provides Fleet ping posts.
         '!fcping channel_id message sends the message to associated channel"""
