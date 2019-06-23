@@ -17,7 +17,7 @@ class RorqStatus(commands.Cog):
 
     @commands.command(name='rorqstatus')
     @checks.spam_check()
-    @checks.is_rorqstatus_manager()
+    @checks.is_rorqstatus_user()
     async def _rorq_status(self, ctx):
         """Provides Rorqual status posts.
         '!rorqstatus green Switches rorq status to green.
@@ -27,6 +27,10 @@ class RorqStatus(commands.Cog):
         try:
             if ctx.channel.id not in self.config.webhook_channel_ids:
                 raise Exception("**ERROR** You're not allowed to use this command on this channel!")
+
+            if not (await checks.check_is_rorqstatus_manager2(ctx, True)) and not (await checks.check_is_fcping_manager2(ctx, True)):
+                raise Exception(
+                    '**ERROR** Only rorqstatus managers and FC''s can change rorq status! Please contact system admin if you need this right.')
 
             splittedStr = ctx.message.content.split()
             if len(splittedStr) < 2:
@@ -40,6 +44,9 @@ class RorqStatus(commands.Cog):
             current_datetime = datetime.now(pytz.timezone('UTC')).strftime('%b %d %Y %H:%M (EVE Time)')
             last_update = "**Last Update** {}".format(current_datetime)
             if status == 'green':
+                if not await checks.check_is_rorqstatus_manager2(ctx, True):
+                    raise Exception('**ERROR** Only rorqstatus managers can change status to green! Please contact system admin if you need this right.')
+
                 current_folder = os.path.dirname(__file__)
                 filename = os.path.join(current_folder, 'status_green.png')
                 file = discord.File(filename)

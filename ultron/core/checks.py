@@ -15,27 +15,34 @@ async def check_is_co_owner(ctx):
         return True
     return False
 
-
 async def check_is_rorqstatus_manager(ctx):
+    return await check_is_rorqstatus_manager2(ctx, False)
+
+async def check_is_rorqstatus_manager2(ctx, silent):
     if ctx.author.id in ctx.bot.rorqstatus_managers:
         return True
 
     if ctx.author.id in ctx.bot.webhook_bots:
         return True
 
-    await ctx.author.send('WARNING: You do not have the required roles to use commands in this channel. Feel free'
-                          ' to PM me directly any commands you would like to use.')
+    if not silent:
+        await ctx.author.send('WARNING: You do not have the required roles to use commands in this channel. Feel free'
+                              ' to PM me directly any commands you would like to use.')
     return False
 
 async def check_is_fcping_manager(ctx):
+    return await check_is_fcping_manager2(ctx, False)
+
+async def check_is_fcping_manager2(ctx, silent):
     if ctx.author.id in ctx.bot.fcping_managers:
         return True
 
     if ctx.author.id in ctx.bot.webhook_bots:
         return True
 
-    await ctx.author.send('WARNING: You do not have the required roles to use commands in this channel. Feel free'
-                          ' to PM me directly any commands you would like to use.')
+    if not silent:
+        await ctx.author.send('WARNING: You do not have the required roles to use commands in this channel. Feel free'
+                              ' to PM me directly any commands you would like to use.')
     return False
 
 async def check_is_guildowner(ctx):
@@ -145,8 +152,8 @@ def is_co_owner():
     return commands.check(check_is_co_owner)
 
 
-def is_rorqstatus_manager():
-    return commands.check(check_is_rorqstatus_manager)
+def is_rorqstatus_user():
+    return commands.check(check_is_fcping_manager) or commands.check(check_is_rorqstatus_manager)
 
 def is_fcping_manager():
     return commands.check(check_is_fcping_manager)

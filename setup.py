@@ -31,11 +31,12 @@ setup(
         'pytz',
         'youtube_dl',
         'aiohttp==3.3.2',
-        'feedparser'
+        'feedparser',
+        'requests'
     ],
 
     dependency_links=[
-        'git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py[voice]'
+        'git+https://github.com/Rapptz/discord.py[voice]'
     ],
 
     entry_points={
