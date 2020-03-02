@@ -59,7 +59,7 @@ auto_responses = {
 }
 
 # Killmail Plugin Settings - Recommend using the !addkills command if possible instead of this
-killmail = {  # add or remove groups as needed, groups must have unique names.
+'''killmail = {  # add or remove groups as needed, groups must have unique names.
     'bigKills': True,  # Enable the sharing of eve wide big kills
     'bigKillsValue': 1000000000,  # Big kill ISK threshold
     'bigKillsChannel': '389827425581662226',  # Channel big kills are posted to
@@ -70,7 +70,7 @@ killmail = {  # add or remove groups as needed, groups must have unique names.
             'lossMails': True  # Show Loss Mails
         }
     }
-}
+}'''
 
 rorqStatus = {
     'channelId': 000000000000000 #Test Server rorqstatus Channel
