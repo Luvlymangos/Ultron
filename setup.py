@@ -29,7 +29,6 @@ setup(
         'python-dateutil>=2.6',
         'asyncpg>=0.13',
         'pytz',
-        'youtube_dl',
         'aiohttp==3.6.2',
         'feedparser',
         'requests'
