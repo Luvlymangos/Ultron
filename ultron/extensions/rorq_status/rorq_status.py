@@ -21,7 +21,8 @@ class RorqStatus(commands.Cog):
     async def _rorq_status(self, ctx):
         """Provides Rorqual status posts.
         '!rorqstatus green Switches rorq status to green.
-        '!rorqstatus red Switches rorq status to red."""
+        '!rorqstatus red Switches rorq status to red.
+        '!rorqstatus down Switches rorq status to down"""
         self.logger.info('RorqStatus - {} requested a rorqual status change.'.format(str(ctx.message.author)))
         conversationChannel = ctx.author if ctx.bot.config.dm_only else ctx
         try:
@@ -48,18 +49,25 @@ class RorqStatus(commands.Cog):
                     raise Exception('**ERROR** Only rorqstatus managers can change status to green! Please contact system admin if you need this right.')
 
                 current_folder = os.path.dirname(__file__)
-                filename = os.path.join(current_folder, 'status_green.png')
+                filename = os.path.join(current_folder, 'Siege_green.gif')
                 file = discord.File(filename)
 
                 await self.delete_messages(rorqStatusChannel)
                 await rorqStatusChannel.send("@here {}".format(last_update), file=file)
             elif status == 'red':
                 current_folder = os.path.dirname(__file__)
-                filename = os.path.join(current_folder, 'status_red.png')
+                filename = os.path.join(current_folder, 'Siege_red.gif')
                 file = discord.File(filename)
 
                 await self.delete_messages(rorqStatusChannel)
                 await rorqStatusChannel.send("@here {}".format(last_update), file=file)
+            elif status == 'down':
+                current_folder = os.path.dirname(__file__)
+                filename = os.path.join(current_folder, 'Pankrab_down.gif')
+                file = discord.File(filename)
+
+                await self.delete_messages(rorqStatusChannel)
+                await rorqStatusChannel.send("@here {}".format(last_update), file=file)            
             else:
                 raise Exception('**ERROR:** Unknown status command {} Do !help rorqstatus for more info'.format(status))
         except Exception as e:
