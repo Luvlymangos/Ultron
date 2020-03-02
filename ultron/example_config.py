@@ -81,16 +81,16 @@ fcPings = {
 }
 
 # Fleet-Up Plugin Settings
-fleetUp = {  # add or remove groups as needed, groups must have unique names.
+```fleetUp = {  # add or remove groups as needed, groups must have unique names.
     'group_id': 12345,  # Fleet-up group ID
     'user_id': 12345,  # User ID from your fleet-up api-key
     'api_code': '',  # API Code from your fleet-up api-key
     'auto_posting': True,  # Change to False if you don't want the bot to automatically post new and upcoming fleets
     'channel_id': 12345,  # Channel to post fleet-up operations
-}
+}```
 
 # RSS Extension Settings
-rss = {
+```rss = {
     'channelId': 12345,      # Default channel to which entries are sent
     'updateInterval': 15,    # Time in minutes to wait between checks for new RSS content
     'feeds': {
@@ -102,6 +102,6 @@ rss = {
             'uri': 'https://feeds.bbci.co.uk/news/world/rss.xml?edition=uk'
         },
     },
-}
+}```
 
 
