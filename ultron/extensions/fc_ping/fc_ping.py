@@ -47,7 +47,7 @@ class FCPing(commands.Cog):
 
             current_datetime = datetime.now(pytz.timezone('UTC')).strftime('%b %d %Y %H:%M (EVE Time)')
             timestamp = "Timestamp: {}".format(current_datetime)
-            await channelToPing.send("%s\nFrom: %s\n%s" % (timestamp, user, message))
+            await channelToPing.send("%s\nFrom: %s\n\n%s" % (timestamp, user, message))
 
         except Exception as e:
             return await conversationChannel.send(str(e))
